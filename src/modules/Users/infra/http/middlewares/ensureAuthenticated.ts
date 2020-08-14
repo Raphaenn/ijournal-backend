@@ -1,0 +1,37 @@
+import { Request, Response, NextFunction } from "express";
+import { verify } from "jsonwebtoken";
+
+import authConfig from "@config/auth";
+import AppError from "@shared/errors/AppError";
+
+interface ITokenPayload {
+    iat: number;
+    exp: number;
+    sub: string;
+}
+
+export default function ensureAuthenticated(req: Request, res: Response, next: NextFunction): void {
+    const authHeader = req.headers.authorization;
+
+    if(!authHeader) {
+        throw new AppError("JWT token is missing", 401);
+    }
+
+    // Bearer separar
+    const [, token] = authHeader.split(' ');
+    
+    try {
+        const decode = verify(token, authConfig.jwt.secret);
+
+        // as TokenPayload é um hack do typescript para forçar um formato para o decode
+        const { sub } = decode as ITokenPayload;
+
+        req.user = {
+            id: sub,
+        };
+
+        return next();
+    } catch (error) {
+        throw new AppError("Invalid JWT token", 401)
+    }
+};

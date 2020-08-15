@@ -6,13 +6,15 @@
   - Criar hash da senha. [x]
   - Token para autenticacão. [x]
   <br>
+
 * Update
-  - Permitir upload de profile photo. []
-  - Permitir update de profile do usuário. []
+  - Permitir upload de profile photo. [x]
+  - Permitir update de profile do usuário. [x]
   - Reset de senha. []
   - Send forgot password email. []
   - Salvar novo token no banco de dados. []
   <br>
+  
 * Funcionalidades
   - Bloquear rotas não autenticadas. []
 

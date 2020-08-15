@@ -5,6 +5,7 @@ import cors from "cors";
 import 'express-async-errors';
 import { errors } from "celebrate";
 
+import UploadConfig from "@config/upload";
 import AppError from "@shared/errors/AppError";
 import routes from "./routes";
 
@@ -15,6 +16,9 @@ const app = express();
 
 app.use(cors({}));
 app.use(express.json());
+
+// permite jogar o localhost/8080/files/iamgename.png e ver a imagem no navegador
+app.use("/file", express.static(UploadConfig.uploadFolder))
 app.use(routes);
 
 app.use(errors());

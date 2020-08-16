@@ -10,8 +10,8 @@
 * Update
   - Permitir upload de profile photo. [x]
   - Permitir update de profile do usuário. [x]
-  - Reset de senha. [Doing]
-  - Send forgot password email. []
+  - Reset de senha. [testar]
+  - Send forgot password email. [x]
   - Salvar novo token no banco de dados. []
   <br>
   

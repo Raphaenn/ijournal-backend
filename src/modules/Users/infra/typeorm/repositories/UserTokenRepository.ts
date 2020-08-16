@@ -3,7 +3,7 @@ import { getRepository, Repository } from "typeorm";
 import UserToken from "../entities/UserToken";
 import IUserTokenRepository from "@modules/Users/repositories/IUserTokenRepository";
 
-export default class UserTokenRepository implements IUserTokenRepository {
+class UserTokenRepository implements IUserTokenRepository {
 
     private ormRepository: Repository<UserToken>
 
@@ -32,3 +32,6 @@ export default class UserTokenRepository implements IUserTokenRepository {
     }
 
 }
+
+
+export default UserTokenRepository;

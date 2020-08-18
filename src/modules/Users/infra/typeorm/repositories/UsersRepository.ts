@@ -11,8 +11,8 @@ class UsersRepository implements IUserRepository {
         this.ormRepo = getRepository(UsersModel)
     }
 
-    public async findAll(data: any): Promise<UsersModel[]> {
-        const allusers = await this.ormRepo.find(data)
+    public async findAll(): Promise<UsersModel[]> {
+        const allusers = await this.ormRepo.find()
 
         return allusers
     };

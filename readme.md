@@ -12,7 +12,7 @@
   - Permitir update de profile do usuário. [x]
   - Reset de senha. [testar]
   - Send forgot password email. [x]
-  - Salvar novo token no banco de dados. []
+  - Salvar novo token no banco de dados. [x]
   <br>
   
 * Funcionalidades

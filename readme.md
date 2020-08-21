@@ -20,6 +20,7 @@
 
 ### Adm
   - Mostrar usuário / lista de usuários. []
+  - Editar qualquer usuário. []
   - Poder excluir usuários. [];
 
 ### Post
@@ -33,3 +34,6 @@
   - Devo retornar uma lista com as metas do usuário e o status de cada uma. 
   - Devo retornar uma lista para o usuário com o agregado das áreas de suas metas e o status de cada uma. []
   - Devo retornar uma lista para o usuário com os números sobre seus tempos (semana, mês e ano). []
+
+## Infra
+  - Criar o dockeFile e docker compose para a aplicacão. []

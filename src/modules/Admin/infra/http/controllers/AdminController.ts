@@ -11,7 +11,21 @@ export default class AdminController {
         const userList = await list.execute();
 
         return res.json(userList)
+    }
 
+    public async delete(req: Request, res: Response): Promise<Response> {
+        const { user_id } = req.body;
+
+        const userService = container.resolve(ListUserService);
+
+        // const user = await userService.execute({
+
+        // });
+        
+
+        return res.json({
+            Delete: `Deleted: ${user_id}`
+        })
     }
 }
 

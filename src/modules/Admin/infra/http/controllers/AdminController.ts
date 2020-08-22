@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { container } from "tsyringe";
 
 import ListUserService from "@modules/Admin/services/ListUserService";
+import DeleteUserService from "@modules/Admin/services/DeleteUserService";
 
 export default class AdminController {
     public async index(req: Request, res: Response): Promise<Response> {
@@ -16,13 +17,9 @@ export default class AdminController {
     public async delete(req: Request, res: Response): Promise<Response> {
         const { user_id } = req.body;
 
-        const userService = container.resolve(ListUserService);
-
-        // const user = await userService.execute({
-
-        // });
+        const userService = container.resolve(DeleteUserService);
+        await userService.execute(user_id)
         
-
         return res.json({
             Delete: `Deleted: ${user_id}`
         })

@@ -3,6 +3,7 @@ import { container } from "tsyringe";
 
 import ListUserService from "@modules/Admin/services/ListUserService";
 import DeleteUserService from "@modules/Admin/services/DeleteUserService";
+import EditUserService from "@modules/Admin/services/EditUserService";
 
 export default class AdminController {
     public async index(req: Request, res: Response): Promise<Response> {
@@ -24,6 +25,22 @@ export default class AdminController {
             Delete: `Deleted: ${user_id}`
         })
     }
-}
 
-// Receber user_id e confimar que é um usuário válido antes de fazer a listagem
+    public async update(req: Request, res: Response): Promise<Response> {
+        const {user_id, name, email, oldpassword, password} = req.body;
+
+        const updateUser = container.resolve(EditUserService);
+
+        const user = await updateUser.execute({
+            user_id,
+            name,
+            email,
+            oldpassword,
+            password
+        })
+
+        return res.json(user)
+
+
+    }
+}

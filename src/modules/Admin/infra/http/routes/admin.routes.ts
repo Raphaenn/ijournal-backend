@@ -8,5 +8,6 @@ const usersListController = new UsersListController();
 
 adminRoute.get("/list", ensureAuthenticated, usersListController.index);
 adminRoute.delete("/delete", ensureAuthenticated, usersListController.delete);
+adminRoute.post("/user", ensureAuthenticated, usersListController.update)
 
 export default adminRoute;

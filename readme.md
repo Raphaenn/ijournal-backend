@@ -16,12 +16,12 @@
   <br>
   
 * Funcionalidades
-  - Bloquear rotas não autenticadas. []
+  - Bloquear rotas não autenticadas. [x]
 
 ### Adm
-  - Mostrar usuário / lista de usuários. []
+  - Mostrar usuário / lista de usuários. [x]
   - Editar qualquer usuário. []
-  - Poder excluir usuários. [];
+  - Poder excluir usuários. [x];
 
 ### Post
   - Usuário deve poder cadastrar 3 agradecimentos diários. []

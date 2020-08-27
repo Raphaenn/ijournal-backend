@@ -35,7 +35,7 @@ class UpdateAvatarservice {
 
         await this.userRepository.save(user);
 
-        return user
+        return user;
     }
 
 }

@@ -1,4 +1,4 @@
-import { getRepository, Repository } from "typeorm"
+import { getRepository, Repository } from "typeorm";
 
 import IUserRepository from "@modules/Users/repositories/IUserRepository";
 import UsersModel from "@modules/Users/infra/typeorm/entities/UserModel";
@@ -33,8 +33,6 @@ class UsersRepository implements IUserRepository {
 
     public async create(userData: ICreateUserDTO): Promise<UsersModel> {
         const userCreated = this.ormRepo.create(userData);
-
-        console.log(userCreated);
 
         await this.ormRepo.save(userCreated);
 

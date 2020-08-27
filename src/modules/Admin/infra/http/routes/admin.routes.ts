@@ -6,7 +6,7 @@ import ensureAuthenticated from "@modules/Users/infra/http/middlewares/ensureAut
 const adminRoute = Router();
 const usersListController = new UsersListController();
 
-adminRoute.get("/list", ensureAuthenticated, usersListController.index);
+adminRoute.get("/list", usersListController.index);
 adminRoute.delete("/delete", ensureAuthenticated, usersListController.delete);
 adminRoute.post("/user", ensureAuthenticated, usersListController.update)
 

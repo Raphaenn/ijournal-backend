@@ -12,6 +12,7 @@ routes.use('/sessions', sessionsRoute);
 routes.use('/users', userRoute);
 routes.use('/profile', profileRoute);
 routes.use('/password', passwordRouter);
-routes.use("/admin", adminRoute)
+routes.use("/admin", adminRoute);
+// routes.use("/journal", )
 
 export default routes;

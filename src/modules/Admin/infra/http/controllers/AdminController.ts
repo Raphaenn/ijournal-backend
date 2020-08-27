@@ -41,6 +41,5 @@ export default class AdminController {
 
         return res.json(user)
 
-
     }
 }

@@ -31,12 +31,13 @@ class CreateUserService {
         const user = await this.userRepository.create({
             name,
             email,
-            password: hashedPassword
+            password: hashedPassword,
+            planLevel: "default"
         });
 
         await this.userRepository.save(user)
 
-        return user
+        return user;
     }
 }
 

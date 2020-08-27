@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BeforeInsert } from "typeorm";
 
 @Entity('users')
 class UsersModel {
@@ -17,6 +17,12 @@ class UsersModel {
 
     @Column()
     avatar: string;
+
+    @Column()
+    admin: boolean;
+
+    @Column()
+    planLevel: string;
 
     @CreateDateColumn()
     created_at: Date;

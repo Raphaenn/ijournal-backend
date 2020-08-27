@@ -8,5 +8,9 @@ import UsersRepository from "@modules/Users/infra/typeorm/repositories/UsersRepo
 import IUserTokenRepository from "@modules/Users/repositories/IUserTokenRepository";
 import UserTokenRepository from "@modules/Users/infra/typeorm/repositories/UserTokenRepository";
 
+import IDiaryRepository from "@modules/Journals/repositories/IDiaryRepository";
+import DiaryRepository from "@modules/Journals/infra/typeorm/repositories/DiaryRepository"
+
 container.registerSingleton<IUserRepository>('UserRepo', UsersRepository);
 container.registerSingleton<IUserTokenRepository>("UsersTokensRepo", UserTokenRepository);
+container.registerSingleton<IDiaryRepository>("DiaryRepo", DiaryRepository);

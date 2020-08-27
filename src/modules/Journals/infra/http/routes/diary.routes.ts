@@ -1,11 +1,14 @@
 import { Router } from "express";
 
 import DiaryController from "../controllers/DiaryController";
+import ensureAuthenticated from "@modules/Users/infra/http/middlewares/ensureAuthenticated";
 
 const diaryController = new DiaryController();
 
 const diaryRoute = Router();
 
-diaryRoute.get("/create", diaryController.index);
+diaryRoute.use(ensureAuthenticated);
+
+diaryRoute.post("/create", diaryController.create);
 
 export default diaryRoute;

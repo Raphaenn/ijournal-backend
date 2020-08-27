@@ -5,6 +5,7 @@ import sessionsRoute from "@modules/Users/infra/http/routes/sessions.routes";
 import profileRoute from "@modules/Users/infra/http/routes/profile.routes"
 import passwordRouter from "@modules/Users/infra/http/routes/password.routes";
 import adminRoute from "@modules/Admin/infra/http/routes/admin.routes";
+import diaryRoute from "@modules/Journals/infra/http/routes/diary.routes"; 
 
 const routes = Router();
 
@@ -13,6 +14,6 @@ routes.use('/users', userRoute);
 routes.use('/profile', profileRoute);
 routes.use('/password', passwordRouter);
 routes.use("/admin", adminRoute);
-// routes.use("/journal", )
+routes.use("/diary", diaryRoute)
 
 export default routes;

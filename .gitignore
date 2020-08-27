@@ -6,3 +6,4 @@ ormConfig.json
 coverage
 dist
 .DS_Store
+readme.md

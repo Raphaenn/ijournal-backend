@@ -1,6 +1,5 @@
 export default interface IDiaryDTO {
     user_id: string;
-    id: string;
     gratitude1: string;
     gratitude2: string;
     gratitude3: string;
@@ -8,5 +7,4 @@ export default interface IDiaryDTO {
     activity2: string;
     activity3: string;
     diaryData: Date;
-    date: Date;
 }

@@ -1,4 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BeforeInsert } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from "typeorm";
+
+import UserModel from "@modules/Users/infra/typeorm/entities/UserModel";
 
 @Entity('diary')
 class DiaryModel {
@@ -24,11 +26,15 @@ class DiaryModel {
     @Column()
     activity3: string;
 
-    @Column()
+    @Column('timestamp with time zone')
     diaryData: Date;
 
     @Column()
     user_id: string;
+
+    @ManyToOne(() => UserModel)
+    @JoinColumn({ name: 'user_id' })
+    user: UserModel
 
     @CreateDateColumn()
     created_at: Date;

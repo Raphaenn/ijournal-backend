@@ -43,7 +43,7 @@ export class diary1598544258777 implements MigrationInterface {
                  },
                  {
                     name: 'diaryData',
-                    type: 'timestamp',
+                    type: 'timestamp with time zone',
                     isNullable: false
                  },
                  {

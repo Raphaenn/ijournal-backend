@@ -16,7 +16,7 @@ class DiaryRepository implements IDiaryRepository {
         const diary = this.ormRepo.create(data);
         await this.ormRepo.save(diary)
 
-        return diary
+        return diary;
     };
 
     public async findAll(): Promise<DiaryModel[] | undefined> {
@@ -27,7 +27,7 @@ class DiaryRepository implements IDiaryRepository {
 
     public async findByDate(date: Date): Promise<DiaryModel | undefined> {
         const findDiary = await this.ormRepo.findOne({
-            where: { date: date },
+            where: { diaryData: date },
         });
 
         return findDiary || undefined;

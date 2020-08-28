@@ -7,7 +7,7 @@ import IDiaryRepository from "../repositories/IDiaryRepository";
 import IDiaryDTO from "../dtos/IDiaryDTO";
 
 @injectable()
-class PostService {
+class DiaryCRUDService {
     constructor(
         @inject('DiaryRepo')
         private diaryRepository: IDiaryRepository
@@ -15,7 +15,7 @@ class PostService {
 
     public async execute(data: IDiaryDTO): Promise<DiaryModel> {
 
-        const diaryDate = await this.diaryRepository.findByDate(data.diaryData);
+        const diaryDate = await this.diaryRepository.findByDate(data.user_id, data.diaryData);
 
         if(diaryDate) throw new AppError("You can only creete a diary for day.", 401);
 
@@ -31,4 +31,4 @@ class PostService {
     }
 }
 
-export default PostService;
+export default DiaryCRUDService;

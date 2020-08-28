@@ -19,6 +19,12 @@ class PostService {
 
         if(diaryDate) throw new AppError("You can only creete a diary for day.", 401);
 
+        const setDate = new Date(data.diaryData);
+
+        if(setDate.getDate() < new Date().getDate() - 1) throw new AppError("You can't create a diary if past more then 1 day");
+
+        if(setDate.getDate() > new Date().getDate() - 1) throw new AppError("You can't create a diary in the future");
+
         const createDiary = await this.diaryRepository.create(data);
 
         return createDiary;

@@ -14,6 +14,7 @@ class DiaryRepository implements IDiaryRepository {
 
     public async create(data: IDiaryDTO): Promise<DiaryModel> {
         const diary = this.ormRepo.create(data);
+
         await this.ormRepo.save(diary)
 
         return diary;

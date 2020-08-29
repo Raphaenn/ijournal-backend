@@ -29,6 +29,14 @@ class DiaryCRUDService {
 
         return createDiary;
     }
+
+    public async update() {
+        // criar funcionalidade de update do diario
+    }
+
+    public async delete() {
+        // criar funcionalidade para deletar diario selecionado (id do diário)
+    }
 }
 
 export default DiaryCRUDService;

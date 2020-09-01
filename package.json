@@ -4,9 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "babel src --extensions \" .js, .ts\" --out-dir dist --copy-files",
-    "dev:start": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts",
-    "start": "ts-node src/shared/infra/http/server.ts",
+    "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
+    "dev:start": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts",
+    "start": "nodemon -L --watch ./dist dist/shared/infra/http/server.js",
+    "up": "yarn build && docker-compose up",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "test": "jest"
   },
@@ -16,6 +17,7 @@
     "@babel/node": "^7.10.5",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/plugin-proposal-decorators": "^7.10.5",
+    "@babel/plugin-proposal-optional-chaining": "^7.11.0",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-typescript": "^7.10.4",
     "@types/bcryptjs": "^2.4.2",
@@ -35,8 +37,6 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
-    "express": "^4.17.1",
-    "init": "^0.1.2",
     "@types/express": "^4.17.7",
     "@types/multer": "^1.4.3",
     "@types/nodemailer": "^6.4.0",
@@ -47,8 +47,10 @@
     "cors": "^2.8.5",
     "date-fns": "^2.15.0",
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "handlebars": "^4.7.6",
+    "init": "^0.1.2",
     "ioredis": "^4.17.3",
     "jsonwebtoken": "^8.5.1",
     "mime": "^2.4.6",

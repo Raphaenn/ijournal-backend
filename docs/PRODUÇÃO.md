@@ -33,3 +33,5 @@ Feito a imagem basta entrar no ambiente de produção e rodar o comando abaixo:
 docker-compose pull
 docker-compose up -d
 ```
+
+# Mudar o ormConfig para poder acessar o "./src/shared em producão

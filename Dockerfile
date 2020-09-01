@@ -7,14 +7,15 @@ WORKDIR /home/node/api
 
 # Install dependencies
 
-COPY package*.json yarn.* ./
-COPY tsconfig*.json ./
+COPY package.json yarn.* ./
+COPY tsconfig.json ./
 RUN yarn install
 
-# RUN yarn build
-# COPY ormconfig.json ./dist/
-# COPY .env ./dist/
-# WORKDIR ./dist
+RUN apt-get install vim
+
+COPY ormconfig.json ./dist/
+COPY .env ./dist/
+WORKDIR /dist
 
 EXPOSE 8080
 

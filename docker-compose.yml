@@ -1,0 +1,30 @@
+version: '3'
+
+services: 
+    databasej: 
+        container_name: ijounral-database
+        image: postgres:12
+        restart: always
+        environment:
+            POSTGRES_USER: ${POSTGRES_USER}
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+            POSTGRES_DB: ${POSTGRES_DB}
+        volumes:
+            - ./.data/postgresql:/var/lib/postgresql/data
+        ports:
+            - "5432:5432"
+
+    api: 
+        container_name: ijournal-api
+        build: '.'
+        command: yarn dev:start
+        ports: 
+            - "8080:8080"
+        restart: always
+        env_file: 
+            - .env
+        # pesquisar sobre a parte de volumes
+        volumes: 
+            - .:/home/node/api
+        depends_on:
+            - databasej

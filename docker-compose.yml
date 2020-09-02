@@ -1,19 +1,21 @@
 version: "3"
 
 services:
+
   node-app:
+    container_name: ijournal-api
     build:
       context: .
       dockerfile: Dockerfile.dev
-    container_name: ijournal-api
     volumes:
-      - ./src:/app/src
+      - .:/home/node/api
+      - /home/node/api/node_modules
     ports:
       - "8080:8080"
-    command: yarn dev:start
     depends_on:
-      - databasej
-  database: 
+      - postgresDb
+
+  postgresDb: 
     container_name: ijournalDb
     image: postgres:12
     environment:

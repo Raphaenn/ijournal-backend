@@ -1,9 +1,17 @@
 FROM node:12-alpine
 
-WORKDIR /app
+RUN mkdir -p /home/node/api/node_modules && chown -R node:node /home
 
-COPY package*.json ./
+WORKDIR /home/node/api
+
+COPY package*.json yarn.* ./
+
+USER node
 
 RUN yarn install
 
-COPY . .
+COPY --chown=node:node . . 
+
+EXPOSE 8080
+
+ENTRYPOINT [ "./init.sh" ]

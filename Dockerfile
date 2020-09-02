@@ -1,23 +1,13 @@
-FROM node:lts-alpine
+FROM node:12-alpine
 
-# RUN mkdir -p /home/node/api/node_modules && chown -R node:node /home
+WORKDIR /app
 
-# Create a app directory
-WORKDIR /home/node/api
+ADD . .
 
-# Install dependencies
+ENV NODE_ENV=production
 
-COPY package.json yarn.* ./
-COPY tsconfig.json ./
-RUN yarn install
-
-RUN apt-get install vim
-
-COPY ormconfig.json ./dist/
-COPY .env ./dist/
-WORKDIR /dist
+RUN npm i
 
 EXPOSE 8080
 
-ENTRYPOINT [ "./init.sh" ]
-
+CMD [ "node", "dist/index.js" ]

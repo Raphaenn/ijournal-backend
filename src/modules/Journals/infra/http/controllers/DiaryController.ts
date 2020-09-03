@@ -18,4 +18,19 @@ export default class DiaryController {
 
         return res.json(saveDiary);
     }
+
+    public async update(req: Request, res: Response): Promise<Response> {
+        const id = req.params.id
+        const {gratitude1, gratitude2, gratitude3, activity1, activity2, activity3} = req.body;
+
+        const createDiary = container.resolve(DiaryCRUDService);
+
+        const diary = Object.assign({
+            id, gratitude1, gratitude2, gratitude3, activity1, activity2, activity3
+        });
+
+        const saveDiary = await createDiary.update(diary);
+
+        return res.json(saveDiary);
+    }
 }

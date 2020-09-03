@@ -18,11 +18,11 @@ class FindDiaryService {
         private diaryRepository: IDiaryRepository
     ) {}
 
-    public async execute({ user_id, diaryData }: IRequest): Promise<DiaryModel[] | undefined> {
+    public async execute({ user_id, diaryData }: IRequest): Promise<DiaryModel | undefined> {
 
-        if(!user_id || !diaryData) throw new AppError("the data was not informed")
+        if(!user_id || !diaryData) throw new AppError("The data was not informed")
 
-        const diaryList = await this.diaryRepository.findAll(user_id, diaryData);
+        const diaryList = await this.diaryRepository.findByDate(user_id, diaryData);
         return diaryList;
     }
 

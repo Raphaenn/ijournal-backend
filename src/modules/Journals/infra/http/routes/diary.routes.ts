@@ -13,5 +13,6 @@ diaryRoute.use(ensureAuthenticated);
 
 diaryRoute.post("/create", diaryController.create);
 diaryRoute.get("/list", listDiaryController.index);
+diaryRoute.put("/:id", diaryController.update)
 
 export default diaryRoute;

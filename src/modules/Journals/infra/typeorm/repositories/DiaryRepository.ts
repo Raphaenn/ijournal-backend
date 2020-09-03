@@ -19,12 +19,12 @@ class DiaryRepository implements IDiaryRepository {
         return diary;
     };
 
-    public async findAll(user_id: string, data: Date): Promise<DiaryModel[] | undefined> {
+    public async findByDate(user_id: string, data: Date): Promise<DiaryModel | undefined> {
         const month = new Date(data).getMonth() + 1;
         const year = new Date(data).getFullYear();
         const parsedMonth = String(month).padStart(2, '0');
 
-        const allDiaries = await this.ormRepo.find({
+        const findDiary = await this.ormRepo.findOne({
             where: { 
                 user_id, 
                 diaryData: Raw(dateFieldName =>
@@ -33,16 +33,24 @@ class DiaryRepository implements IDiaryRepository {
             }
         })
 
-        return allDiaries
+        return findDiary
     };
 
-    public async findByDate(user_id: string, date: Date): Promise<DiaryModel | undefined> {
+    public async findOne(diaryId: string): Promise<DiaryModel | undefined> {
         const findDiary = await this.ormRepo.findOne({
-            where: { user_id, diaryData: date },
+            where: { id: diaryId}
         });
 
-        return findDiary || undefined;
+        return findDiary;
+    }
+
+    public async save(diary: DiaryModel): Promise<DiaryModel> {
+        return this.ormRepo.save(diary);
     };
+
+    public async exclude(diary: DiaryModel): Promise<void> {
+        await this.ormRepo.remove(diary);
+    }
 
 }
 

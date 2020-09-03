@@ -28,16 +28,31 @@ class DiaryCRUDService {
         const createDiary = await this.diaryRepository.create(data);
 
         return createDiary;
-    }
+    };
 
-    public async update() {
-        // criar funcionalidade de update do diario.
-        
-    }
+    public async update(diarydata: DiaryModel): Promise<DiaryModel> {
+        const diary = await this.diaryRepository.findOne(diarydata.id);
 
-    public async delete() {
-        // criar funcionalidade para deletar diario selecionado (id do diário).
-    }
+        if(!diary) throw new AppError("Diary not found");
+
+        diary.activity1 = diarydata.activity1;
+        diary.activity2 = diarydata.activity2;
+        diary.activity3 = diarydata.activity3;
+        diary.gratitude1 = diarydata.gratitude1;
+        diary.gratitude2 = diarydata.gratitude2;
+        diary.gratitude3 = diarydata.gratitude3;
+
+        return await this.diaryRepository.save(diary);
+    };
+
+    public async delete(diaryId: string): Promise<void> {
+        const diary = await this.diaryRepository.findOne(diaryId);
+
+        if(!diary) throw new AppError("Diary not found");
+
+        await this.diaryRepository.exclude(diary)
+
+    };
 }
 
 export default DiaryCRUDService;

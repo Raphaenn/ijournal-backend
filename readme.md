@@ -25,7 +25,7 @@
   - Poder excluir usuários. [x];
 
 ### Post
-  - Usuário deve poder cadastrar 3 agradecimentos diários, excluir e editar. []
+  - Usuário deve poder cadastrar 3 agradecimentos diários, excluir e editar. [x]
   - Usuário deve poder cadastrar 3 atividades chaves realizadas no dia. []
   - Usuário deve poder listar o tempo gasto estudando, em lazer, trabalhando e dormindo no dia (Visualizar na semana, mês e ano). []
   - Usuário pode classificar as metas em 4 áreas. (Profissional, Pessoal, Espiritual, Saúde). []

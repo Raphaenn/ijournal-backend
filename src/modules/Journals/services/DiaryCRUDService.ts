@@ -50,7 +50,7 @@ class DiaryCRUDService {
 
         if(!diary) throw new AppError("Diary not found");
 
-        await this.diaryRepository.exclude(diary)
+        await this.diaryRepository.exclude(diary);
 
     };
 }

@@ -32,7 +32,7 @@
   - Usuário deve poder marcar as metas como feitas, pendentes ou realizando. []
 
 ## Stats
-  - Devo retornar uma lista com as metas do usuário e o status de cada uma. 
+  - Devo retornar uma lista com as metas do usuário e o status de cada uma. []
   - Devo retornar uma lista para o usuário com o agregado das áreas de suas metas e o status de cada uma. []
   - Devo retornar uma lista para o usuário com os números sobre seus tempos (semana, mês e ano). []
 

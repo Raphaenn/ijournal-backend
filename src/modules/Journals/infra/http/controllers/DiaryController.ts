@@ -23,14 +23,24 @@ export default class DiaryController {
         const id = req.params.id
         const {gratitude1, gratitude2, gratitude3, activity1, activity2, activity3} = req.body;
 
-        const createDiary = container.resolve(DiaryCRUDService);
+        const updateDiary = container.resolve(DiaryCRUDService);
 
         const diary = Object.assign({
             id, gratitude1, gratitude2, gratitude3, activity1, activity2, activity3
         });
 
-        const saveDiary = await createDiary.update(diary);
+        const saveDiary = await updateDiary.update(diary);
 
         return res.json(saveDiary);
+    }
+
+    public async remove(req: Request, res: Response): Promise<Response> {
+        const id = req.params.id;
+
+        const deleteDiary = container.resolve(DiaryCRUDService);
+
+        await deleteDiary.delete(id)
+
+        return res.json({Done: `Diary ${id} was exclude`})
     }
 }

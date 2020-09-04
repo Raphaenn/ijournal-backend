@@ -1,6 +1,6 @@
 # Funcionalidades
 
-### User
+## User
 * Register
   - Cadastrar name, email, password do usuário. [x]
   - Criar hash da senha. [x]
@@ -19,12 +19,12 @@
 * Funcionalidades
   - Bloquear rotas não autenticadas. [x]
 
-### Adm
+## Adm
   - Mostrar usuário / lista de usuários. [x]
   - Editar qualquer usuário. [x]
   - Poder excluir usuários. [x];
 
-### Post
+## Post
   - Usuário deve poder cadastrar 3 agradecimentos diários, excluir e editar. [x]
   - Usuário deve poder cadastrar 3 atividades chaves realizadas no dia. []
   - Usuário deve poder listar o tempo gasto estudando, em lazer, trabalhando e dormindo no dia (Visualizar na semana, mês e ano). []

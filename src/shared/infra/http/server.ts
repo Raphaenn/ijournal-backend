@@ -15,6 +15,7 @@ import "@shared/container";
 
 const app = express();
 
+app.disable('x-powered-by');
 app.use(cors({}));
 app.use(express.json());
 
@@ -35,8 +36,6 @@ app.use((err: Error, request: Request, response: Response, next: NextFunction) =
         });
     }
 
-    console.error(err)
-
     return response.status(500).json({
         status: 'error',
         messagem: 'Internal Error'
@@ -45,6 +44,6 @@ app.use((err: Error, request: Request, response: Response, next: NextFunction) =
 
 app.listen(8080, () => {
     console.log('******************************');
-    console.log(`SERVER STARTED as development`);
+    console.log(`🛡️  Server listening on port: 8080 🛡️ `);
     console.log('******************************');
 });

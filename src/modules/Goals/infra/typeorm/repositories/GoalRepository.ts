@@ -2,6 +2,7 @@ import { getRepository, Repository } from "typeorm";
 
 import IGoalRepository from "@modules/Goals/repositories/IGoalRepository";
 import GoalModel from "../entities/GoalModel";
+import IGoalDTO from "@modules/Goals/dtos/IGoalDTO"
 
 class GoalRepository implements IGoalRepository {
 
@@ -11,28 +12,46 @@ class GoalRepository implements IGoalRepository {
         this.ormRepo = getRepository(GoalModel)
     }
 
-    public async create() {
-        
+    public async create(data: IGoalDTO): Promise<GoalModel> {
+        const goal = this.ormRepo.create(data);
+        await this.ormRepo.save(goal);
+
+        return goal;
     }
 
-    public async findAll() {
+    public async findAll(user_id: string): Promise<GoalModel[] | undefined> {
+        const allgoals = await this.ormRepo.find({
+            where: { user_id }
+        });
 
+        return allgoals;
     }
 
-    public async findOne() {
+    public async findOne(goalId: string): Promise<GoalModel | undefined> {
+        const goalData = await this.ormRepo.findOne({
+            where: { id: goalId }
+        });
 
+        return goalData;
     }
 
-    public async findByYear() {
+    public async findByYear(user_id: string, date: Date): Promise<GoalModel[] | undefined> {
+        const yearGoals = await this.ormRepo.find({
+            where: {
+                user_id,
+                startDate: date
+            }
+        });
 
+        return yearGoals
     }
 
-    public async exclude() {
-
+    public async exclude(goal: GoalModel): Promise<void> {
+        await this.ormRepo.remove(goal) ;
     }
 
-    public async save() {
-
+    public async save(goals: GoalModel): Promise<GoalModel> {
+        return await this.ormRepo.save(goals)
     }
 }
 

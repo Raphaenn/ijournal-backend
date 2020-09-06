@@ -18,4 +18,29 @@ export default class GoalController {
 
         return res.json(saveGoal)
     }
+
+    public async update(req: Request, res: Response): Promise<Response> {
+        const id = req.params.id;
+        const { description, status, group, startDate, deadDate } = req.body;
+
+        const goalService = container.resolve(GoalsCRUDService);
+
+        const goal = Object.assign({
+            id, description, status, group, startDate, deadDate
+        })
+
+        const updateGoal = await goalService.update(goal);
+
+        return res.json(updateGoal)
+    }
+
+    public async remove(req: Request, res: Response): Promise<Response> {
+        const id = req.params.id;
+
+        const goalService = container.resolve(GoalsCRUDService);
+
+        await goalService.delete(id);
+
+        return res.json({Done: `Goal ${id} was exclude`})
+    }
 }

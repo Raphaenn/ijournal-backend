@@ -30,27 +30,26 @@ class DiaryCRUDService {
         return createDiary;
     };
 
-    public async update(goals: GoalModel): Promise<void> {
-        // const diary = await this.diaryRepository.findOne(diarydata.id);
+    public async update(newGoal: GoalModel): Promise<GoalModel> {
+        const Oldgoal = await this.goalRepository.findOne(newGoal.id);
 
-        // if(!diary) throw new AppError("Diary not found");
+        if(!Oldgoal) throw new AppError("Goal not found"); 
 
-        // diary.activity1 = diarydata.activity1;
-        // diary.activity2 = diarydata.activity2;
-        // diary.activity3 = diarydata.activity3;
-        // diary.gratitude1 = diarydata.gratitude1;
-        // diary.gratitude2 = diarydata.gratitude2;
-        // diary.gratitude3 = diarydata.gratitude3;
+        Oldgoal.description = newGoal.description;
+        Oldgoal.group = newGoal.group;
+        Oldgoal.status = newGoal.status;
+        Oldgoal.startDate = newGoal.startDate;
+        Oldgoal.deadDate = newGoal.deadDate;
 
-        // return await this.diaryRepository.save(diary);
+        return await this.goalRepository.save(Oldgoal)
     };
 
     public async delete(goalId: string): Promise<void> {
-        // const diary = await this.diaryRepository.findOne(diaryId);
+        const goal = await this.goalRepository.findOne(goalId);
 
-        // if(!diary) throw new AppError("Diary not found");
+        if(!goal) throw new AppError("Goal not found");
 
-        // await this.diaryRepository.exclude(diary);
+        await this.goalRepository.exclude(goal);
 
     };
 }

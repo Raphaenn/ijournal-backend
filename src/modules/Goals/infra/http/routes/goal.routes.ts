@@ -9,6 +9,6 @@ const goalsRoute = Router();
 goalsRoute.use(ensureAuthenticated);
 goalsRoute.post("/create", goalController.create);
 goalsRoute.put("/:id", goalController.update);
-goalsRoute.delete("/:id", goalController.remove)
+goalsRoute.delete("/:id", goalController.remove);
 
 export default goalsRoute;

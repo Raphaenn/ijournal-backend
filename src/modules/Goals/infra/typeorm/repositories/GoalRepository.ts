@@ -1,4 +1,4 @@
-import { getRepository, Repository } from "typeorm";
+import { getRepository, Repository, Raw } from "typeorm";
 
 import IGoalRepository from "@modules/Goals/repositories/IGoalRepository";
 import GoalModel from "../entities/GoalModel";
@@ -35,11 +35,15 @@ class GoalRepository implements IGoalRepository {
         return goalData;
     }
 
-    public async findByYear(user_id: string, date: Date): Promise<GoalModel[] | undefined> {
+    public async findByYear(user_id: string, year: number): Promise<GoalModel[] | undefined> {
+
+        
         const yearGoals = await this.ormRepo.find({
             where: {
                 user_id,
-                startDate: date
+                startDate: Raw(dateFieldName =>
+                    `to_char(${dateFieldName}, 'YYYY') = '${year}'`
+                ),
             }
         });
 

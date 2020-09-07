@@ -30,7 +30,7 @@
   - Usuário pode classificar as metas em 4 áreas. (Profissional, Pessoal, Espiritual, Saúde). [x]
   - Usuário deve poder marcar as metas como feitas, pendentes ou realizando. [x]
   - Usuário deve poder cadastrar o tempo gasto estudando, em lazer, trabalhando e dormindo no dia (Visualizar na semana, mês e ano). []
-  - Usuário deve poder cadastrar 3 atividades chaves realizadas no dia. []
+  <!-- - Usuário deve poder cadastrar 3 atividades chaves realizadas no dia. [] -->
 
 ## Stats
   - Devo retornar uma lista com as metas do usuário (Ano) e o status de cada uma. [x]

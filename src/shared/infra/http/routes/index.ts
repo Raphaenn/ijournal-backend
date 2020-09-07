@@ -8,6 +8,7 @@ import adminRoute from "@modules/Admin/infra/http/routes/admin.routes";
 import diaryRoute from "@modules/Journals/infra/http/routes/diary.routes";
 import goalsRoute from "@modules/Goals/infra/http/routes/goal.routes";
 import getgoalsRoute from "@modules/Goals/infra/http/routes/getGoals.routes";
+import activitiesRoutes from "@modules/TimeSpend/infra/http/routes/activitiesTime.routes";
 
 const routes = Router();
 
@@ -19,5 +20,7 @@ routes.use("/admin", adminRoute);
 routes.use("/diary", diaryRoute);
 routes.use("/goal", goalsRoute);
 routes.use("/goal/get", getgoalsRoute);
+routes.use("/activities", activitiesRoutes);
+
 
 export default routes;

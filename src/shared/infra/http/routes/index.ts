@@ -7,6 +7,7 @@ import passwordRouter from "@modules/Users/infra/http/routes/password.routes";
 import adminRoute from "@modules/Admin/infra/http/routes/admin.routes";
 import diaryRoute from "@modules/Journals/infra/http/routes/diary.routes";
 import goalsRoute from "@modules/Goals/infra/http/routes/goal.routes";
+import getgoalsRoute from "@modules/Goals/infra/http/routes/getGoals.routes";
 
 const routes = Router();
 
@@ -17,5 +18,6 @@ routes.use('/password', passwordRouter);
 routes.use("/admin", adminRoute);
 routes.use("/diary", diaryRoute);
 routes.use("/goal", goalsRoute);
+routes.use("/goal/get", getgoalsRoute);
 
 export default routes;

@@ -36,7 +36,6 @@ class GoalRepository implements IGoalRepository {
     }
 
     public async findByYear(user_id: string, year: number): Promise<GoalModel[] | undefined> {
-
         
         const yearGoals = await this.ormRepo.find({
             where: {
@@ -48,6 +47,20 @@ class GoalRepository implements IGoalRepository {
         });
 
         return yearGoals
+    }
+
+    public async findByCategory(user_id: string, group: string, year: number): Promise<GoalModel[] | undefined> {
+        const findGoals = await this.ormRepo.find({
+            where: { 
+                user_id, 
+                group,
+                startDate: Raw(dateFieldName =>
+                    `to_char(${dateFieldName}, 'YYYY') = '${year}'`
+                ),
+            }
+        });
+
+        return findGoals
     }
 
     public async exclude(goal: GoalModel): Promise<void> {

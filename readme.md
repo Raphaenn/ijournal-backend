@@ -24,10 +24,10 @@
   - Editar qualquer usuário. [x]
   - Poder excluir usuários. [x];
 
-## Post
+## Create
   - Usuário deve poder cadastrar 3 agradecimentos diários, excluir e editar. [x]
   - Usuário deve poder cadastrar 15 metas por ano. [x]
-  - Usuário pode classificar as metas em 4 áreas. (Profissional, Pessoal, Espiritual, Saúde). [x]
+  - Usuário pode classificescrutuar as metas em 4 áreas. (Profissional, Pessoal, Espiritual, Saúde). [x]
   - Usuário deve poder marcar as metas como feitas, pendentes ou realizando. [x]
   - Usuário deve poder cadastrar o tempo gasto estudando, em lazer, trabalhando e dormindo no dia (Visualizar na semana, mês e ano). []
   <!-- - Usuário deve poder cadastrar 3 atividades chaves realizadas no dia. [] -->

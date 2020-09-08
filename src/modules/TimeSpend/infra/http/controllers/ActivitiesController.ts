@@ -1,21 +1,21 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 
-// import DiaryCRUDService from "@modules/Journals/services/DiaryCRUDService";
+import ActivitiesCRUDService from "@modules/TimeSpend/services/ActivitiesCRUDService";
 
 export default class ActivitiesController {
     public async create(req: Request, res: Response): Promise<Response> {
         const user_id = req.user.id
-        const {gratitude1, gratitude2, gratitude3, activity1, activity2, activity3, diaryData} = req.body;
+        const { activitiesDate, workTime, sleepTime, studyTime, leisureTime, trainingTime } = req.body;
 
-        // const createDiary = container.resolve(DiaryCRUDService);
+        const createActivitie = container.resolve(ActivitiesCRUDService);
 
-        const diary = Object.assign({
-            user_id, gratitude1, gratitude2, gratitude3, activity1, activity2, activity3, diaryData
+        const activities = Object.assign({
+            user_id, activitiesDate, workTime, sleepTime, studyTime, leisureTime, trainingTime
         });
 
-        // const saveDiary = await createDiary.execute(diary);
+        const saveActivitie = await createActivitie.execute(activities);
 
-        return res.json(gratitude1);
+        return res.json(saveActivitie);
     }
 }

@@ -42,28 +42,41 @@ class ActivitiesCRUDService {
         }
     };
 
-    // public async update(newGoal: GoalModel): Promise<GoalModel> {
-    //     const Oldgoal = await this.goalRepository.findOne(newGoal.id);
+    public async update(activity: ActivitiesModel): Promise<ActivitiesModel> {
+        const getActivity = await this.activitiesRepository.findOne(activity.id);
 
-    //     if(!Oldgoal) throw new AppError("Goal not found"); 
+        const formatedDate = format(new Date(activity.activitiesDate), "dd-MM-yyyy");
+        const currentDate = format(new Date(Date.now()), "dd-MM-yyyy");
 
-    //     Oldgoal.description = newGoal.description;
-    //     Oldgoal.group = newGoal.group;
-    //     Oldgoal.status = newGoal.status;
-    //     Oldgoal.startDate = newGoal.startDate;
-    //     Oldgoal.deadDate = newGoal.deadDate;
+        const activities = await this.activitiesRepository.findByDate(activity.user_id, formatedDate);
 
-    //     return await this.goalRepository.save(Oldgoal)
-    // };
+        if(activities && activities?.length) throw new AppError("You cannot register two activities on the same day.");
 
-    // public async delete(goalId: string): Promise<void> {
-    //     const goal = await this.goalRepository.findOne(goalId);
+        const summation = (activity.leisureTime + activity.sleepTime + activity.studyTime + activity.trainingTime + activity.workTime);
 
-    //     if(!goal) throw new AppError("Goal not found");
+        if(summation > 24) throw new AppError("Sum of activities cannot exceed 24 hours.", 401);
+        
+        if(formatedDate > currentDate) throw new AppError("You cannot register an activitie in the future");
 
-    //     await this.goalRepository.exclude(goal);
+        if(!getActivity) throw new AppError("Activity not found"); 
 
-    // };
+        getActivity.workTime = activity.workTime;
+        getActivity.studyTime = activity.studyTime;
+        getActivity.sleepTime = activity.sleepTime;
+        getActivity.leisureTime = activity.leisureTime;
+        getActivity.trainingTime = activity.trainingTime;
+        
+        return await this.activitiesRepository.save(getActivity)
+    };
+
+    public async delete(activityId: string): Promise<void> {
+        const getActivity = await this.activitiesRepository.findOne(activityId);
+
+        if(!getActivity) throw new AppError("Activity not found"); 
+
+        await this.activitiesRepository.exclude(getActivity)
+
+    };
 }
 
 export default ActivitiesCRUDService;

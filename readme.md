@@ -35,7 +35,7 @@
 ## Stats
   - Devo retornar uma lista com as metas do usuário (Ano) e o status de cada uma. [x]
   - Devo retornar uma lista com o agregado das áreas de suas metas (Ano) e o status de cada uma. [x]
-  - Devo retornar uma lista com os números sobre seus tempos (semana, mês e ano). []
+  - Devo retornar uma lista com os números sobre seus tempos (semana, mês e ano). [x]
 
 ## upgradeAccount
   - Usuário pode atualizar seu planLevel para "default", "premium1", "premium2" e "premium3". [x]

@@ -1,5 +1,5 @@
 import { injectable, inject } from "tsyringe";
-import { startOfHour, isBefore, getYear, format } from "date-fns";
+import { getYear } from "date-fns";
 
 import AppError from "@shared/errors/AppError";
 

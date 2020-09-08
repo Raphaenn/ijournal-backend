@@ -38,7 +38,7 @@ class ForgotPassService {
                 name: user.name,
                 email: user.email
             },
-            subject: "[Gobarber] Recuperação de senha",
+            subject: "[ijournall] Recuperação de senha",
             templateData: {
                 file: forgotPassTemplate,
                 variables: {

@@ -18,4 +18,30 @@ export default class ActivitiesController {
 
         return res.json(saveActivitie);
     }
+
+    public async update(req: Request, res: Response): Promise<Response> {
+        const id = req.params.id;
+        const { activitiesDate, workTime, sleepTime, studyTime, leisureTime, trainingTime } = req.body;
+
+        const createActivitie = container.resolve(ActivitiesCRUDService);
+
+        const activity = Object.assign({
+            id, activitiesDate, workTime, sleepTime, studyTime, leisureTime, trainingTime
+        })
+
+        const updateActivity = await createActivitie.update(activity);
+
+        return res.json(updateActivity)
+
+    }
+
+    public async remove(req: Request, res: Response): Promise<Response> {
+        const activityId = req.params.id;
+
+        const createActivitie = container.resolve(ActivitiesCRUDService);
+
+        await createActivitie.delete(activityId);
+
+        return res.json({Done: `activity ${activityId} was exclude`})
+    }
 }

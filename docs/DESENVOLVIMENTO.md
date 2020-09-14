@@ -8,11 +8,6 @@ DESENVOLVIMENTO
 * Docker com docker-compose
 * Visual Studio Code (Recomendado mas não obrigatório)
 
-### Usuário
-
-Email: admin@waproject.com.br 
-Senha: senha@123
-
 ### Iniciando 
 
 ```bash

@@ -21,6 +21,8 @@ class ListMonthActivitiesService {
     public async execute({user_id, month, year}: IRequest): Promise<ActivitiesModel[] | undefined> {
         const activities = await this.activitiesRepository.findByMonth({user_id, month, year}) ;
 
+        // if(!month)
+
         if(!activities) throw new AppError("Activities not found");
 
         return activities

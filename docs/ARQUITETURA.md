@@ -3,7 +3,7 @@ ARQUITETURA
 
 ### Environments Docker
 
-Ver arquivos ./env, ./env.example e ./src/settings.ts
+Ver arquivos ./env, ./env.example
 
 |         ENV         | Obrigatório | Valor Padrão |                   Valor esperado                   |
 | ------------------- | ----------- | ------------ | -------------------------------------------------- |
@@ -31,7 +31,7 @@ Ver arquivos ./env, ./env.example e ./src/settings.ts
 
 |     Comando     |                   Descrição                    |               Quem usa                |
 | --------------- | ---------------------------------------------- | ------------------------------------- |
-| dev             | inicia o ts-node-dev                           | Docker dev                            |
+| dev:star        | inicia o ts-node-dev                           | Docker dev                            |
 | build           | gera os arquivos transpilados                  | Docker prod                           |
 | update:packages | atualiza as dependencias do projeto            | desenvolvedor                         |
 | update:base     | atualiza o projeto base                        | desenvolvedor                         |
